@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Patatap</title>
+    <script type="text/javascript" src="paper-full.js"></script>
+    <link rel="stylesheet" type="text/css" href="patatap.css">
+
+    <script type="text/paperscript" canvas="myCanvas">
+        function onKeyDown(event) {
+            // if we resize the window we will get several different stars at the bottom of the screen
+            var maxPoint = new Point(view.size.width, view.size.height);
+            //generate a random point between 0 and 1
+            var randomPoint = Point.random();
+            //Now use randomPoint to generate random points even if window is not resized
+            var point = maxPoint * randomPoint;
+
+            new Path.Star(point, 5, 25, 40).fillColor = 'red';
+        }
+    </script>
+</head>
+
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
